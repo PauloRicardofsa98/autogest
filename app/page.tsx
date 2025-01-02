@@ -1,8 +1,16 @@
 import { SignInButton } from "@clerk/nextjs";
 import Image from "next/image";
 import { Button } from "./_components/ui/button";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth();
+
+  if (userId) {
+    redirect("/dashboard");
+  }
+
   return (
     <div className="grid grid-cols-[2fr,1fr] gap-4 h-full bg-black">
       <div className="polygon bg-red-200 h-full w-full">
