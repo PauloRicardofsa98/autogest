@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ptBR } from "@clerk/localizations";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -12,8 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={` antialiased`}>{children}</body>
+    <html lang="pt-br">
+      <body className={` antialiased`}>
+        <ClerkProvider localization={ptBR}>{children}</ClerkProvider>
+      </body>
     </html>
   );
 }

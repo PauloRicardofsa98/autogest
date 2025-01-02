@@ -1,4 +1,6 @@
+import { SignInButton } from "@clerk/nextjs";
 import Image from "next/image";
+import { Button } from "./_components/ui/button";
 
 export default function Home() {
   return (
@@ -12,9 +14,14 @@ export default function Home() {
         />
       </div>
       <div className="flex justify-start items-center  p-8">
-        <div className="text-white text-center">
-          <h2 className="text-3xl">Bem vindo a</h2>
-          <h2 className="text-6xl text-bold">FormoTech</h2>
+        <div className="text-white text-center space-y-6">
+          <div>
+            <h2 className="text-3xl">Bem vindo a</h2>
+            <h2 className="text-6xl text-bold">FormoTech</h2>
+          </div>
+          <SignInButton mode="modal">
+            <Button className="w-full font-semibold text-xl">Acessar</Button>
+          </SignInButton>
         </div>
       </div>
     </div>
