@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ptBR } from "@clerk/localizations";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "Formotech by Kafcode",
@@ -15,8 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={` antialiased`}>
-        <ClerkProvider localization={ptBR}>{children}</ClerkProvider>
+      <body className={`antialiased`}>
+        <ClerkProvider localization={ptBR}>
+          {children}
+          <ToastContainer position="top-center" />
+        </ClerkProvider>
       </body>
     </html>
   );
