@@ -39,14 +39,12 @@ const ClientPage = async ({
       </CardHeader>
 
       <CardContent>
-        <CardContent>
-          <DataTable
-            columns={clientColumns}
-            data={clients}
-            filterInput={{ name: "name", title: "Nome ou cpf" }}
-            pageFilterPeriod="client"
-          />
-        </CardContent>
+        <DataTable
+          columns={clientColumns}
+          data={clients}
+          filterInput={{ name: "name", title: "Nome ou cpf" }}
+          pageFilterPeriod="client"
+        />
       </CardContent>
     </Card>
   );

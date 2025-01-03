@@ -84,19 +84,10 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground w-screen h-screen;
+    @apply h-full bg-background text-foreground;
   }
 }
 
 .polygon {
   clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
 }
