@@ -18,7 +18,9 @@ export default function RootLayout({
           <SidebarTrigger className="-ml-1" />
           <h1>FormoTech - Arniqueiras</h1>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">{children}</div>
+        <div className="flex flex-1 flex-col gap-4 bg-slate-200 p-4">
+          {children}
+        </div>
       </SidebarInset>
     </SidebarProvider>
   );
