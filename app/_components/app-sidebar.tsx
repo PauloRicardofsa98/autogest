@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   CarIcon,
+  ChartBarStackedIcon,
   LayoutDashboardIcon,
   LucideIcon,
   PiggyBankIcon,
@@ -53,13 +54,18 @@ const navMain: NavMain = [
     ],
   },
   {
-    title: "Estética",
+    title: "Cadastro",
     url: "#",
     items: [
       {
         title: "Produtos",
         url: "/product",
         Icon: ShoppingBasketIcon,
+      },
+      {
+        title: "Categoria de produtos",
+        url: "/category-product",
+        Icon: ChartBarStackedIcon,
       },
       {
         title: "Serviços",
@@ -125,7 +131,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                           isActive={item.isActive || false}
                           className="text-base"
                         >
-                          <a href={item.url}>
+                          <a href={item.url} className="truncate">
                             {item.Icon && <item.Icon />}
                             {item.title}
                           </a>
