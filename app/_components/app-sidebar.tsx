@@ -96,7 +96,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar {...props}>
       <SidebarHeader>
         <div className="relative h-20 w-64">
-          <Image src="/logo.png" alt="logo" fill className="object-contain" />
+          <Image
+            src="/logo.png"
+            alt="logo"
+            fill
+            className="object-contain"
+            sizes="100%"
+            priority
+          />
         </div>
       </SidebarHeader>
       <SidebarContent>
