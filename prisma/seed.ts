@@ -1,11 +1,10 @@
-import { PrismaClient } from "@prisma/client";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Prisma, PrismaClient } from "@prisma/client";
 import { faker } from "@faker-js/faker";
 
 const prisma = new PrismaClient();
 
-async function main() {
-  console.log("Start seeding...");
-
+const generateClients = async () => {
   // Quantidade de clientes para gerar
   const clientsToGenerate = 50;
 
@@ -21,6 +20,27 @@ async function main() {
   await prisma.client.createMany({
     data: clients,
   });
+};
+const generateCategoryProducts = async () => {
+  // Quantidade de clientes para gerar
+  const generate = 10;
+
+  const dados: Prisma.CategoryProductCreateInput[] = Array.from(
+    { length: generate },
+    () => ({
+      name: faker.commerce.department(),
+    }),
+  );
+
+  await prisma.categoryProduct.createMany({
+    data: dados,
+  });
+};
+
+async function main() {
+  console.log("Start seeding...");
+  // generateClients();
+  generateCategoryProducts();
 
   console.log("Seeding finished.");
 }
