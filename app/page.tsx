@@ -12,23 +12,18 @@ export default async function Home() {
   }
 
   return (
-    <div className="grid grid-cols-[2fr,1fr] gap-4 h-full bg-black">
-      <div className="polygon bg-red-200 h-full w-full">
-        <Image
-          src="/opala.png"
-          alt="Formotech"
-          className="object-cover "
-          fill
-        />
+    <div className="grid h-screen grid-cols-[2fr,1fr] gap-4 bg-black">
+      <div className="polygon h-full w-full bg-red-200">
+        <Image src="/opala.png" alt="Formotech" className="object-cover" fill />
       </div>
-      <div className="flex justify-start items-center  p-8">
-        <div className="text-white text-center space-y-6">
+      <div className="flex items-center justify-start p-8">
+        <div className="space-y-6 text-center text-white">
           <div>
             <h2 className="text-3xl">Bem vindo a</h2>
-            <h2 className="text-6xl text-bold">FormoTech</h2>
+            <h2 className="text-bold text-6xl">FormoTech</h2>
           </div>
           <SignInButton mode="modal">
-            <Button className="w-full font-semibold text-xl">Acessar</Button>
+            <Button className="w-full text-xl font-semibold">Acessar</Button>
           </SignInButton>
         </div>
       </div>
