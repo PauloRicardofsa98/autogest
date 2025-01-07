@@ -42,7 +42,12 @@ export const InputField = <T extends FieldValues>({
                 disabled={disabled}
               />
             ) : (
-              <Input {...field} disabled={disabled} type={type} />
+              <Input
+                {...field}
+                className={`${type === "number" ? "text-right" : ""}`}
+                disabled={disabled}
+                type={type}
+              />
             )}
           </FormControl>
           <FormMessage />
