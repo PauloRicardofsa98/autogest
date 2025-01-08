@@ -69,6 +69,9 @@ export default {
       fontFamily: {
         comic: ["Comic Sans MS", "Comic Sans", "cursive"],
       },
+      width: {
+        "popover-content": "var(--radix-popover-trigger-width)",
+      },
     },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
