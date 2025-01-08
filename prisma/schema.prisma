@@ -8,16 +8,17 @@ datasource db {
 }
 
 model Client {
-  id           Int      @default(autoincrement())
-  uuid         String   @id @default(uuid())
+  id           Int       @default(autoincrement())
+  uuid         String    @id @default(uuid())
   name         String
   email        String
   phone        String
   address      String
   cpfCnpj      String
   observations String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  Vehicle      Vehicle[]
 }
 
 model CategoryProduct {
@@ -85,9 +86,55 @@ model Service {
   updatedAt DateTime @updatedAt
 }
 
+model Vehicle {
+  id         Int      @default(autoincrement())
+  uuid       String   @id @default(uuid())
+  plate      String
+  model      String
+  brand      Brand
+  year       Int?
+  color      String?
+  clientUuid String?
+  client     Client?  @relation(fields: [clientUuid], references: [uuid])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
 enum Unit {
   UN
   KG
   CX
   LT
+}
+
+enum Brand {
+  FIAT
+  FORD
+  GM
+  VOLKSWAGEN
+  HONDA
+  YAMAHA
+  SUZUKI
+  KAWASAKI
+  BMW
+  MERCEDES
+  AUDI
+  VOLVO
+  SCANIA
+  IVECO
+  RENAULT
+  PEUGEOT
+  CITROEN
+  HYUNDAI
+  KIA
+  TOYOTA
+  NISSAN
+  MITSUBISHI
+  JEEP
+  LAND_ROVER
+  PORSCHE
+  LAMBORGHINI
+  FERRARI
+  MASERATI
+  BUGATT
 }

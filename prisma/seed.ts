@@ -102,13 +102,35 @@ const generateServices = async () => {
   });
 };
 
+const generateVehicles = async () => {
+  // Quantidade de clientes para gerar
+  const generate = 25;
+
+  const dados: Prisma.VehicleCreateInput[] = Array.from(
+    { length: generate },
+    () => ({
+      name: faker.vehicle.vehicle(),
+      brand: "FIAT",
+      model: faker.vehicle.model(),
+      year: 2024,
+      color: faker.vehicle.color(),
+      plate: faker.vehicle.vin(),
+    }),
+  );
+
+  await prisma.vehicle.createMany({
+    data: dados,
+  });
+};
+
 async function main() {
   console.log("Start seeding...");
   // generateClients();
   // generateCategoryProducts();
   // generateSuppliers();
   // generateProducts();
-  generateServices();
+  // generateServices();
+  generateVehicles();
 
   console.log("Seeding finished.");
 }
