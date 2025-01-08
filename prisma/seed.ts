@@ -122,6 +122,25 @@ const generateVehicles = async () => {
     data: dados,
   });
 };
+const generateEmployers = async () => {
+  // Quantidade de clientes para gerar
+  const generate = 25;
+
+  const dados: Prisma.EmployerCreateInput[] = Array.from(
+    { length: generate },
+    () => ({
+      name: faker.person.fullName(),
+      email: faker.internet.email(),
+      phone: "9999999999",
+      address: `${faker.location.streetAddress()}, ${faker.location.city()} - ${faker.location.state()}, Brasil`,
+      cpf: faker.string.numeric(11),
+    }),
+  );
+
+  await prisma.employer.createMany({
+    data: dados,
+  });
+};
 
 async function main() {
   console.log("Start seeding...");
@@ -130,7 +149,8 @@ async function main() {
   // generateSuppliers();
   // generateProducts();
   // generateServices();
-  generateVehicles();
+  // generateVehicles();
+  generateEmployers();
 
   console.log("Seeding finished.");
 }

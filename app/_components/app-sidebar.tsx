@@ -79,7 +79,7 @@ const navMain: NavMain = [
       },
       {
         title: "Funcionários",
-        url: "/employee",
+        url: "/employer",
         Icon: Users2Icon,
       },
     ],
