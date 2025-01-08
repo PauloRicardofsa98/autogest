@@ -16,7 +16,7 @@ import { InputPrice } from "@/app/_components/inputs/price";
 import { ComboboxInput } from "@/app/_components/inputs/combobox-input";
 
 interface FormProps {
-  product: Product | null;
+  product?: Product;
 }
 
 export const FormProduct = ({ product }: FormProps) => {
@@ -76,11 +76,17 @@ export const FormProduct = ({ product }: FormProps) => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <div className="grid grid-cols-4 gap-4">
           <InputField control={form.control} description="Nome" name="name" />
-          <InputField control={form.control} name="sku" description="Sku" />
+          <InputField
+            control={form.control}
+            name="sku"
+            description="Sku"
+            type="number"
+          />
           <InputField
             control={form.control}
             name="barcode"
             description="Código de barras"
+            type="number"
           />
           <InputPrice control={form.control} description="Preço" name="price" />
           <ComboboxInput
@@ -119,7 +125,7 @@ export const FormProduct = ({ product }: FormProps) => {
             variant="destructive"
             onClick={() => router.back()}
           >
-            Cancelar
+            Cancelar/Voltar
           </Button>
           <Button type="submit" className="flex gap-2">
             {product ? (

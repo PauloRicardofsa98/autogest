@@ -13,5 +13,6 @@ export const listProducts = async (where?: Prisma.ProductWhereInput) => {
 };
 
 export const getProduct = async (where?: Prisma.ProductWhereInput) => {
-  return await db.product.findFirst({ where });
+  const product = await db.product.findFirst({ where });
+  return JSON.parse(JSON.stringify(product));
 };

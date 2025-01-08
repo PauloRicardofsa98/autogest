@@ -6,7 +6,7 @@ import { DataTableColumnContent } from "@/app/_components/table/data-table-colum
 import { ProductSupplierRowActions } from "./product-supplier-row-actions";
 
 type ProductSupplierAll = Prisma.ProductSupplierGetPayload<{
-  include: { productSupplier: true; supplier: true };
+  include: { supplier: true; product: true };
 }>;
 
 export const productSupplierColumns: ColumnDef<ProductSupplierAll>[] = [
