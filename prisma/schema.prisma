@@ -76,6 +76,15 @@ model Supplier {
   productSupplier ProductSupplier[]
 }
 
+model Service {
+  id        Int      @default(autoincrement())
+  uuid      String   @id @default(uuid())
+  name      String
+  price     Decimal  @db.Decimal(10, 2)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 enum Unit {
   UN
   KG

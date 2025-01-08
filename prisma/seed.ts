@@ -85,6 +85,22 @@ const generateProducts = async () => {
     data: dados,
   });
 };
+const generateServices = async () => {
+  // Quantidade de clientes para gerar
+  const generate = 25;
+
+  const dados: Prisma.ServiceCreateInput[] = Array.from(
+    { length: generate },
+    () => ({
+      name: faker.commerce.productName(),
+      price: faker.commerce.price(),
+    }),
+  );
+
+  await prisma.service.createMany({
+    data: dados,
+  });
+};
 
 async function main() {
   console.log("Start seeding...");
@@ -92,6 +108,7 @@ async function main() {
   // generateCategoryProducts();
   // generateSuppliers();
   // generateProducts();
+  generateServices();
 
   console.log("Seeding finished.");
 }
