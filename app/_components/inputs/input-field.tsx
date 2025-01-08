@@ -17,6 +17,7 @@ interface InputEmailProps<T extends FieldValues> {
   disabled?: boolean;
   type?: HTMLInputTypeAttribute;
   format?: string;
+  className?: string;
 }
 export const InputField = <T extends FieldValues>({
   control,
@@ -25,13 +26,14 @@ export const InputField = <T extends FieldValues>({
   description,
   type = "text",
   format,
+  className,
 }: InputEmailProps<T>) => {
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className={className}>
           <FormLabel>{description}</FormLabel>
           <FormControl>
             {format ? (
