@@ -8,17 +8,18 @@ datasource db {
 }
 
 model Client {
-  id           Int       @default(autoincrement())
-  uuid         String    @id @default(uuid())
+  id           Int        @default(autoincrement())
+  uuid         String     @id @default(uuid())
   name         String
   email        String
   phone        String
   address      String
   cpfCnpj      String
   observations String?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
   Vehicle      Vehicle[]
+  Schedule     Schedule[]
 }
 
 model CategoryProduct {
@@ -78,38 +79,59 @@ model Supplier {
 }
 
 model Service {
-  id        Int      @default(autoincrement())
-  uuid      String   @id @default(uuid())
+  id        Int        @default(autoincrement())
+  uuid      String     @id @default(uuid())
   name      String
-  price     Decimal  @db.Decimal(10, 2)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  price     Decimal    @db.Decimal(10, 2)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Schedule  Schedule[]
 }
 
 model Vehicle {
-  id         Int      @default(autoincrement())
-  uuid       String   @id @default(uuid())
+  id         Int        @default(autoincrement())
+  uuid       String     @id @default(uuid())
   plate      String
   model      String
   brand      Brand
   year       Int?
   color      String?
   clientUuid String?
-  client     Client?  @relation(fields: [clientUuid], references: [uuid])
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  client     Client?    @relation(fields: [clientUuid], references: [uuid])
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  Schedule   Schedule[]
 }
 
 model Employer {
-  id        Int      @default(autoincrement())
-  uuid      String   @id @default(uuid())
+  id        Int        @default(autoincrement())
+  uuid      String     @id @default(uuid())
   name      String
   email     String
   phone     String
   address   String
   cpf       String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Schedule  Schedule[]
+}
+
+model Schedule {
+  id           Int            @default(autoincrement())
+  uuid         String         @id @default(uuid())
+  serviceUuid  String
+  status       ScheduleStatus
+  notes        String?
+  clientUuid   String
+  vehicleUuid  String
+  employerUuid String?
+  service      Service        @relation(fields: [serviceUuid], references: [uuid])
+  client       Client         @relation(fields: [clientUuid], references: [uuid])
+  vehicle      Vehicle        @relation(fields: [vehicleUuid], references: [uuid])
+  employer     Employer?      @relation(fields: [employerUuid], references: [uuid])
+  dataSaid     DateTime?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
 }
 
 enum Unit {
@@ -117,6 +139,12 @@ enum Unit {
   KG
   CX
   LT
+}
+
+enum ScheduleStatus {
+  PENDING
+  DONE
+  CANCELED
 }
 
 enum Brand {

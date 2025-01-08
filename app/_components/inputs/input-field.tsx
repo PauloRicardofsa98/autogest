@@ -18,6 +18,7 @@ interface InputEmailProps<T extends FieldValues> {
   type?: HTMLInputTypeAttribute;
   format?: string;
   className?: string;
+  onBlur?: () => void;
 }
 export const InputField = <T extends FieldValues>({
   control,
@@ -27,6 +28,7 @@ export const InputField = <T extends FieldValues>({
   type = "text",
   format,
   className,
+  onBlur,
 }: InputEmailProps<T>) => {
   return (
     <FormField
@@ -49,6 +51,7 @@ export const InputField = <T extends FieldValues>({
                 className={`${type === "number" ? "text-right" : ""}`}
                 disabled={disabled}
                 type={type}
+                onBlur={onBlur}
               />
             )}
           </FormControl>

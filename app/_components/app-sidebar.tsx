@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+  CalendarDaysIcon,
   CarIcon,
   ChartBarStackedIcon,
   LayoutDashboardIcon,
@@ -45,6 +46,11 @@ const navMain: NavMain = [
         title: "Dashboard",
         url: "/dashboard",
         Icon: LayoutDashboardIcon,
+      },
+      {
+        title: "Agenda",
+        url: "/schedule",
+        Icon: CalendarDaysIcon,
       },
       {
         title: "Cliente",

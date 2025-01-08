@@ -20,7 +20,14 @@ export const listVehicles = async ({
   return JSON.parse(JSON.stringify(vehicles));
 };
 
-export const getVehicle = async (where?: Prisma.VehicleWhereInput) => {
-  const vehicle = await db.vehicle.findFirst({ where });
-  return JSON.parse(JSON.stringify(vehicle));
+export const getVehicle = async ({
+  where,
+  include,
+}: {
+  where: Prisma.VehicleWhereInput;
+  include?: Prisma.VehicleInclude;
+}) => {
+  const vehicle = await db.vehicle.findFirst({ where, include });
+
+  return vehicle ? JSON.parse(JSON.stringify(vehicle)) : undefined;
 };
