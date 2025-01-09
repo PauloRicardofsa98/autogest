@@ -7,6 +7,7 @@ import {
   LucideIcon,
   ShoppingBasketIcon,
   ShowerHeadIcon,
+  SplitIcon,
   UserIcon,
   Users2Icon,
 } from "lucide-react";
@@ -89,17 +90,27 @@ const navMain: NavMain = [
       },
     ],
   },
-  // {
-  //   title: "Financeiro",
-  //   url: "#",
-  //   items: [
-  //     {
-  //       title: "Contas a pagar",
-  //       url: "/bills-to-pay",
-  //       Icon: PiggyBankIcon,
-  //     },
-  //   ],
-  // },
+  {
+    title: "Financeiro",
+    url: "#",
+    items: [
+      //     {
+      //       title: "Contas a pagar",
+      //       url: "/bills-to-pay",
+      //       Icon: PiggyBankIcon,
+      //     },
+      //     {
+      //       title: "Contas a receber",
+      //       url: "/bills-to-receive",
+      //       Icon: PiggyBankIcon,
+      //     },
+      {
+        title: "Comissão",
+        url: "/employer-commission",
+        Icon: SplitIcon,
+      },
+    ],
+  },
 ];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
