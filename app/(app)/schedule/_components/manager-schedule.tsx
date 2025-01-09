@@ -80,7 +80,7 @@ const ManagerSchedule = ({ clients, services }: ManagerScheduleProps) => {
       <SheetTrigger asChild>
         <Button>Novo Agendamento</Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="overflow-y-auto">
         <SheetHeader>
           <SheetTitle>Adicione um agendamento</SheetTitle>
         </SheetHeader>
