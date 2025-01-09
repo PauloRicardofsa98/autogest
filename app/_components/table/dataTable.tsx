@@ -165,7 +165,7 @@ export const DataTable = ({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex flex-col items-center justify-center lg:flex-row">
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredRowModel().rows.length} registros
         </div>

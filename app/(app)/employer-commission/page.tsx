@@ -37,7 +37,7 @@ const EmployerCommission = async ({
   });
 
   return (
-    <Card>
+    <Card className="max-w-sm lg:max-w-full">
       <CardHeader>
         <CardTitle>
           <div className="flex items-center justify-between">

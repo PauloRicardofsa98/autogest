@@ -12,12 +12,13 @@ export default async function Home() {
   }
 
   return (
-    <div className="grid h-screen grid-cols-[2fr,1fr] gap-4 bg-black">
-      <div className="polygon h-full w-full bg-red-200">
+    <div className="grid h-screen grid-cols-1 gap-4 bg-black lg:grid-cols-[2fr,1fr]">
+      <div className="polygon hidden h-full w-full bg-red-200 lg:flex">
         <Image src="/opala.png" alt="Formotech" className="object-cover" fill />
       </div>
-      <div className="flex items-center justify-start p-8">
-        <div className="space-y-6 text-center text-white">
+      <div className="relative flex items-center justify-center bg-[url(/opala.png)] bg-center p-8 sm:bg-none lg:justify-start">
+        <div className="absolute inset-0 bg-black/70 lg:hidden"></div>
+        <div className="z-10 space-y-6 text-center text-white">
           <div>
             <h2 className="text-3xl">Bem vindo a</h2>
             <h2 className="text-bold text-6xl">FormoTech</h2>

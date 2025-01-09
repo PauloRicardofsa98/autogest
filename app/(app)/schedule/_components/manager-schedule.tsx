@@ -7,7 +7,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/app/_components/ui/sheet";
-import { Brand, Client, Prisma, Service } from "@prisma/client";
+import { Brand, Client, Service } from "@prisma/client";
 import { Button } from "@/app/_components/ui/button";
 import { useEffect, useState } from "react";
 import usePromiseToast from "@/app/_hooks/toast-promise";
@@ -20,13 +20,6 @@ import { createSchedule } from "../_actions/create-schedule";
 import { InputField } from "@/app/_components/inputs/input-field";
 import { ComboboxInput } from "@/app/_components/inputs/combobox-input";
 import { getVehicle } from "@/app/_data/vehicle";
-import { InputCheckbox } from "@/app/_components/inputs/input-checkbox";
-
-type VehicleAll = Prisma.VehicleGetPayload<{
-  include: {
-    client: true;
-  };
-}>;
 
 interface ManagerScheduleProps {
   clients: Client[];
@@ -34,7 +27,6 @@ interface ManagerScheduleProps {
 }
 const ManagerSchedule = ({ clients, services }: ManagerScheduleProps) => {
   const [open, setOpen] = useState(false);
-  const [vehicle, setVehicle] = useState<VehicleAll | undefined>();
   const toastPromise = usePromiseToast();
 
   const form = useForm<ScheduleProps>({
@@ -46,7 +38,6 @@ const ManagerSchedule = ({ clients, services }: ManagerScheduleProps) => {
       model: "",
       plate: "",
       year: undefined,
-      register: false,
     },
   });
 
@@ -76,7 +67,6 @@ const ManagerSchedule = ({ clients, services }: ManagerScheduleProps) => {
     });
 
     if (vehicle) {
-      setVehicle(vehicle);
       form.setValue("model", vehicle.model);
       form.setValue("brand", vehicle.brand);
       form.setValue("year", vehicle.year?.toString());
@@ -148,12 +138,6 @@ const ManagerSchedule = ({ clients, services }: ManagerScheduleProps) => {
                   uuid: client.uuid,
                   name: client.name,
                 }))}
-              />
-              <InputCheckbox
-                control={form.control}
-                name="register"
-                description="Registrar veículo"
-                disabled={vehicle !== undefined}
               />
             </div>
 

@@ -11,7 +11,7 @@ interface HeaderScheduleProps {
 
 const HeaderSchedule = ({ period }: HeaderScheduleProps) => {
   return (
-    <div className="mb-4 flex items-center justify-between space-x-2 border-b border-gray-200 pb-4">
+    <div className="lg-flex-row mb-4 flex flex-col items-center justify-between space-x-2 border-b border-gray-200 pb-4">
       <h2 className="text-lg font-semibold">
         {!period
           ? `Hoje, ${new Date().toLocaleString("pt-BR", {

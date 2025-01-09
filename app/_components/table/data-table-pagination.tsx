@@ -17,8 +17,8 @@ export function DataTablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
   return (
-    <div className="flex items-center justify-end p-2">
-      <div className="flex items-center space-x-6 lg:space-x-8">
+    <div className="flex w-full items-center justify-start p-2 lg:justify-end">
+      <div className="flex flex-col items-center space-y-2 lg:flex-row lg:space-x-8">
         <div className="flex items-center space-x-2">
           <p className="text-sm font-medium">Linhas por pagina</p>
           <Select
@@ -39,47 +39,49 @@ export function DataTablePagination<TData>({
             </SelectContent>
           </Select>
         </div>
-        <div className="flex w-[100px] items-center justify-center text-sm font-medium">
-          Pagina {table.getState().pagination.pageIndex + 1} de{" "}
-          {table.getPageCount()}
-        </div>
         <div className="flex items-center space-x-2">
-          <Button
-            variant="outline"
-            className="hidden h-8 w-8 p-0 text-xl lg:flex"
-            onClick={() => table.setPageIndex(0)}
-            disabled={!table.getCanPreviousPage()}
-          >
-            <span className="sr-only">Ir para a primeira página</span>
-            {"<<"}
-          </Button>
-          <Button
-            variant="outline"
-            className="h-8 w-8 p-0 text-xl"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            <span className="sr-only">Ir para a página anterior</span>
-            {"<"}
-          </Button>
-          <Button
-            variant="outline"
-            className="h-8 w-8 p-0 text-xl"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            <span className="sr-only">Ir para a próxima página</span>
-            {">"}
-          </Button>
-          <Button
-            variant="outline"
-            className="hidden h-8 w-8 p-0 text-xl lg:flex"
-            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-            disabled={!table.getCanNextPage()}
-          >
-            <span className="sr-only">Ir para a última página</span>
-            {">>"}
-          </Button>
+          <div className="flex w-[100px] items-center text-sm font-medium lg:justify-center">
+            Pagina {table.getState().pagination.pageIndex + 1} de{" "}
+            {table.getPageCount()}
+          </div>
+          <div className="flex items-center space-x-2">
+            <Button
+              variant="outline"
+              className="hidden h-8 w-8 p-0 text-xl lg:flex"
+              onClick={() => table.setPageIndex(0)}
+              disabled={!table.getCanPreviousPage()}
+            >
+              <span className="sr-only">Ir para a primeira página</span>
+              {"<<"}
+            </Button>
+            <Button
+              variant="outline"
+              className="h-8 w-8 p-0 text-xl"
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              <span className="sr-only">Ir para a página anterior</span>
+              {"<"}
+            </Button>
+            <Button
+              variant="outline"
+              className="h-8 w-8 p-0 text-xl"
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              <span className="sr-only">Ir para a próxima página</span>
+              {">"}
+            </Button>
+            <Button
+              variant="outline"
+              className="hidden h-8 w-8 p-0 text-xl lg:flex"
+              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+              disabled={!table.getCanNextPage()}
+            >
+              <span className="sr-only">Ir para a última página</span>
+              {">>"}
+            </Button>
+          </div>
         </div>
       </div>
     </div>

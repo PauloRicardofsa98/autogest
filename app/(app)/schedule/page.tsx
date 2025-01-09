@@ -42,8 +42,8 @@ const SchedulePage = async ({
   ]);
 
   return (
-    <Card>
-      <CardHeader className="flex-row justify-between">
+    <Card className="max-w-sm lg:max-w-full">
+      <CardHeader className="flex-col justify-between lg:flex-row">
         <div>
           <CardTitle>Agendamentos</CardTitle>
         </div>

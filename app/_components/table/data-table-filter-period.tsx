@@ -38,7 +38,7 @@ export const DataTableFilterPeriod = ({
   };
 
   return (
-    <div className="flex items-center justify-center rounded-lg bg-background">
+    <div className="flex flex-col items-center justify-center gap-2 rounded-lg bg-background lg:flex-row">
       <Popover>
         <PopoverTrigger asChild>
           <Button
@@ -76,22 +76,22 @@ export const DataTableFilterPeriod = ({
           />
         </PopoverContent>
       </Popover>
-      <Button
-        className="mx-1 h-5/6 w-16"
-        disabled={!date || !date.to || !date.from}
-        onClick={onFilter}
-        variant={"secondary"}
-      >
-        Filtrar
-      </Button>
-      <Button
-        className="mx-1 h-5/6 w-16"
-        disabled={!date}
-        onClick={handleReset}
-        variant={"secondary"}
-      >
-        Redefinir
-      </Button>
+      <div className="">
+        <Button
+          className="mx-1 h-5/6 w-16"
+          disabled={!date || !date.to || !date.from}
+          onClick={onFilter}
+        >
+          Filtrar
+        </Button>
+        <Button
+          className="mx-1 h-5/6 w-16"
+          disabled={!date}
+          onClick={handleReset}
+        >
+          Redefinir
+        </Button>
+      </div>
     </div>
   );
 };
