@@ -14,7 +14,7 @@ export const listSchedules = async ({
     where,
     include,
     orderBy: {
-      updatedAt: "desc",
+      status: "asc",
     },
   });
   return JSON.parse(JSON.stringify(schedules));

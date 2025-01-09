@@ -39,7 +39,10 @@ export const scheduleColumns: ColumnDef<ScheduleAll>[] = [
       />
     ),
     cell: ({ row: { original: schedule } }) => (
-      <DataTableColumnContent align="start">
+      <DataTableColumnContent
+        align="start"
+        className={`${schedule.status === ScheduleStatus.CANCELED && "text-red-500 line-through"}`}
+      >
         {new Date(schedule.createdAt).toLocaleString("pt-BR")}
       </DataTableColumnContent>
     ),
@@ -50,7 +53,10 @@ export const scheduleColumns: ColumnDef<ScheduleAll>[] = [
       <DataTableColumnHeader column={column} title="Modelo" align="start" />
     ),
     cell: ({ row: { original: schedule } }) => (
-      <DataTableColumnContent align="start">
+      <DataTableColumnContent
+        align="start"
+        className={`${schedule.status === ScheduleStatus.CANCELED && "text-red-500 line-through"}`}
+      >
         {schedule.vehicle.model}
       </DataTableColumnContent>
     ),
@@ -61,7 +67,10 @@ export const scheduleColumns: ColumnDef<ScheduleAll>[] = [
       <DataTableColumnHeader column={column} title="Marca" align="start" />
     ),
     cell: ({ row: { original: schedule } }) => (
-      <DataTableColumnContent align="start">
+      <DataTableColumnContent
+        align="start"
+        className={`${schedule.status === ScheduleStatus.CANCELED && "text-red-500 line-through"}`}
+      >
         {schedule.vehicle.brand}
       </DataTableColumnContent>
     ),
@@ -72,7 +81,10 @@ export const scheduleColumns: ColumnDef<ScheduleAll>[] = [
       <DataTableColumnHeader column={column} title="Cor" align="start" />
     ),
     cell: ({ row: { original: schedule } }) => (
-      <DataTableColumnContent align="start">
+      <DataTableColumnContent
+        align="start"
+        className={`${schedule.status === ScheduleStatus.CANCELED && "text-red-500 line-through"}`}
+      >
         {schedule.vehicle.color}
       </DataTableColumnContent>
     ),
@@ -83,7 +95,10 @@ export const scheduleColumns: ColumnDef<ScheduleAll>[] = [
       <DataTableColumnHeader column={column} title="Serviço" align="start" />
     ),
     cell: ({ row: { original: schedule } }) => (
-      <DataTableColumnContent align="start">
+      <DataTableColumnContent
+        align="start"
+        className={`${schedule.status === ScheduleStatus.CANCELED && "text-red-500 line-through"}`}
+      >
         {schedule.service.name}
       </DataTableColumnContent>
     ),
@@ -94,7 +109,10 @@ export const scheduleColumns: ColumnDef<ScheduleAll>[] = [
       <DataTableColumnHeader column={column} title="Cliente" align="start" />
     ),
     cell: ({ row: { original: schedule } }) => (
-      <DataTableColumnContent align="start">
+      <DataTableColumnContent
+        align="start"
+        className={`${schedule.status === ScheduleStatus.CANCELED && "text-red-500 line-through"}`}
+      >
         {schedule.client.name}
       </DataTableColumnContent>
     ),
