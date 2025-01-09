@@ -34,3 +34,10 @@ export const removeMask = (value: string): string => {
   if (!value) return "";
   return value.replace(/\D/g, "");
 };
+
+export const currencyFormat = (value: number): string => {
+  return value.toLocaleString("pt-br", {
+    style: "currency",
+    currency: "BRL",
+  });
+};

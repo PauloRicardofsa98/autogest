@@ -6,9 +6,11 @@ import { Prisma } from "@prisma/client";
 export const listSchedules = async ({
   where,
   include,
+  take,
 }: {
   where?: Prisma.ScheduleWhereInput;
   include?: Prisma.ScheduleInclude;
+  take?: number;
 }) => {
   const schedules = await db.schedule.findMany({
     where,
@@ -16,6 +18,7 @@ export const listSchedules = async ({
     orderBy: {
       status: "asc",
     },
+    take,
   });
   return JSON.parse(JSON.stringify(schedules));
 };
