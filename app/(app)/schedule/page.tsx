@@ -1,5 +1,4 @@
 import { DataTable } from "@/app/_components/table/dataTable";
-import { Button } from "@/app/_components/ui/button";
 import {
   Card,
   CardContent,
@@ -7,13 +6,22 @@ import {
   CardTitle,
 } from "@/app/_components/ui/card";
 import { scheduleColumns } from "./_components/schedule-columns";
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import ManagerProductSupplier from "./_components/manager-schedule";
 import { listSchedules } from "@/app/_data/schedule";
 import { listClients } from "@/app/_data/client";
 import { listServices } from "@/app/_data/service";
+import HeaderSchedule from "./_components/header-schedule";
+import { getPeriod } from "@/app/_utils/helper";
 
-const SchedulePage = async () => {
+const SchedulePage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ period: string }>;
+}) => {
+  const { period } = await searchParams;
+
+  const filterPeriod = getPeriod(period);
+  console.log(filterPeriod);
   const [schedules, clients, services] = await Promise.all([
     listSchedules({
       include: {
@@ -21,6 +29,12 @@ const SchedulePage = async () => {
         employer: true,
         vehicle: true,
         service: true,
+      },
+      where: {
+        createdAt: filterPeriod?.createdAt || {
+          gte: new Date(new Date().setHours(0, 0, 0, 0)),
+          lte: new Date(new Date().setHours(23, 59, 59, 999)),
+        },
       },
     }),
     listClients(),
@@ -37,27 +51,12 @@ const SchedulePage = async () => {
       </CardHeader>
 
       <CardContent>
-        <div className="overflow-hidden rounded-lg bg-white shadow">
-          <div className="flex items-center justify-between border-b bg-gray-50 px-4 py-2">
-            <div className="flex items-center space-x-2">
-              <ArrowLeftIcon className="rounded bg-gray-200 hover:bg-gray-300" />
-              <ArrowRightIcon className="rounded bg-gray-200 hover:bg-gray-300" />
+        <HeaderSchedule period={filterPeriod?.createdAt} />
 
-              <h2 className="text-lg font-semibold">Janeiro 2025</h2>
-            </div>
-            <div className="space-x-2">
-              <Button>Hoje</Button>
-              <Button>Semana</Button>
-            </div>
-          </div>
-          <div className="flex flex-col bg-white py-2">
-            <div className="bg-white py-2 text-center font-bold">Hoje</div>
-            <DataTable
-              columns={scheduleColumns}
-              data={JSON.parse(JSON.stringify(schedules))}
-            />
-          </div>
-        </div>
+        <DataTable
+          columns={scheduleColumns}
+          data={JSON.parse(JSON.stringify(schedules))}
+        />
       </CardContent>
     </Card>
   );

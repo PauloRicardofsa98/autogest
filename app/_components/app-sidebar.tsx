@@ -5,7 +5,6 @@ import {
   ChartBarStackedIcon,
   LayoutDashboardIcon,
   LucideIcon,
-  PiggyBankIcon,
   ShoppingBasketIcon,
   ShowerHeadIcon,
   UserIcon,
@@ -90,17 +89,17 @@ const navMain: NavMain = [
       },
     ],
   },
-  {
-    title: "Financeiro",
-    url: "#",
-    items: [
-      {
-        title: "Contas a pagar",
-        url: "/bills-to-pay",
-        Icon: PiggyBankIcon,
-      },
-    ],
-  },
+  // {
+  //   title: "Financeiro",
+  //   url: "#",
+  //   items: [
+  //     {
+  //       title: "Contas a pagar",
+  //       url: "/bills-to-pay",
+  //       Icon: PiggyBankIcon,
+  //     },
+  //   ],
+  // },
 ];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
