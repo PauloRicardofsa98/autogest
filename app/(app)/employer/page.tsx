@@ -27,7 +27,7 @@ const EmployerPage = async ({
   });
 
   return (
-    <Card>
+    <Card className="max-w-sm lg:max-w-full">
       <CardHeader className="flex-row justify-between">
         <div>
           <CardTitle>Funcionários</CardTitle>

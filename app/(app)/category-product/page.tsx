@@ -27,7 +27,7 @@ const CategoryProductPage = async ({
   });
 
   return (
-    <Card>
+    <Card className="max-w-sm lg:max-w-full">
       <CardHeader className="flex-row justify-between">
         <div>
           <CardTitle>Categorias de produtos</CardTitle>
