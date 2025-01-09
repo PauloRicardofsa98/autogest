@@ -21,6 +21,7 @@ export const getOverview = async () => {
       createdAt: {
         gte: startOfCurrentMonth,
       },
+      status: "DONE",
     },
     include: {
       service: true,
@@ -41,6 +42,7 @@ export const getOverview = async () => {
         gte: startOfLastMonth,
         lte: endOfLastMonth,
       },
+      status: "DONE",
     },
     include: {
       service: true,
@@ -99,6 +101,7 @@ export const getOverview = async () => {
             gte: startOfMonth,
             lte: endOfMonth,
           },
+          status: "DONE",
         },
         include: {
           service: true, // Inclui os dados do serviço relacionado
