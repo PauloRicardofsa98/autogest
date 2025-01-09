@@ -5,7 +5,7 @@ import "./globals.css";
 import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
-  title: "Formotech by Kafcode",
+  title: "AutoGest by Paulo Ricardo",
   description: "Plataforma de gerenciamento de estéticas automotivas",
 };
 
